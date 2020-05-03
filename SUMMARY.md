@@ -1,10 +1,11 @@
 # Table of contents
 
 * [React.js для чайников](README.md)
-* [Терминал](terminal.md)
-* [Работа с файлами в VSCode](vscode-explorer.md)
-* [Создание нового проекта](new-project.md)
-* [Импорт и экспорт](import-export.md)
+* [Общая информация](obshaya-informaciya/README.md)
+  * [Терминал](obshaya-informaciya/terminal.md)
+  * [Работа с файлами в VSCode](obshaya-informaciya/vscode-explorer.md)
+  * [Создание нового проекта](obshaya-informaciya/new-project.md)
+  * [Импорт и экспорт](obshaya-informaciya/import-export.md)
 * [Мини-приложение: Счетчик нажатий](app-click-counter.md)
 * [Мини-приложение: Список дел](app-todo/README.md)
   * [Компонент: Строка ввода нового дела](app-todo/komponent-stroka-vvoda-novogo-dela.md)
