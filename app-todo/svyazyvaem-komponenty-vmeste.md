@@ -13,16 +13,14 @@
 
 У нас есть два компонента: первый \(`Field.jsx`\) добавляет новые элементы, второй \(`Item.jsx`\) отображает их и имеет возможность удалить. Так как компоненты не должны знать друг о друге, быть максимально изолированными, хранить данные мы будем в ближайшем общем предке, стало быть, `TodoApp.jsx`:
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 export function TodoApp() {
   const [items, setItems] = useState([]);
 
 ...
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Каким образом мы добавляем новые пункты?
 
@@ -30,8 +28,7 @@ export function TodoApp() {
 
 Для начала добавим `Field` в `TodoApp`\(не забудь импортировать его\): 
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 import { Field } from './field';
 
@@ -45,13 +42,11 @@ export function TodoApp() {
   );
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Создадим функцию, которая будет коллбеком и добавим ее к пропсам `Field`:
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 export function TodoApp() {
   //...
@@ -67,13 +62,11 @@ export function TodoApp() {
   );
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Перейдем в `Field.jsx` и пропишем этот коллбек как обработчик нажатия кнопки:
 
-{% tabs %}
-{% tab title="Field.jsx" %}
+{% code title="Field.jsx" %}
 ```jsx
 export function Field(props) {
 
@@ -91,8 +84,7 @@ export function Field(props) {
   );
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 \(некоторые куски кода были пропущены для краткости\)
 
@@ -103,15 +95,13 @@ export function Field(props) {
 
 Вернемся в `TodoApp.jsx` и напишем код, который добавляет элемент в список:
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 function addNewItem(newItem) {
   setItems([...items, newItem]);
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Это сложная конструкция, давай разберем по частям:
 
@@ -123,8 +113,7 @@ function addNewItem(newItem) {
 
 Теперь, когда у нас есть список, в который мы можем добавлять элементы, нам надо научиться их отображать. Компонент элемента списка, кстати, должен выглядеть примерно так:
 
-{% tabs %}
-{% tab title="Item.jsx" %}
+{% code title="Item.jsx" %}
 ```jsx
 export function Item(props) {
   return (
@@ -135,8 +124,7 @@ export function Item(props) {
   );
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Вернемся в `TodoApp`. У нас есть массив `items`, надо "сконвертировать" их в `<Item name={...}/>`  \(кстати, не забудь импорировать его\) и добавить в дерево. В этом нам поможет функция `map`. 
 
@@ -158,20 +146,17 @@ const array2 = array1.map(f)
 
 В нашем случае есть массив строк, нужно из него сделать массив `Item`: 
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 function createItem(name) {
   return <Item name={name} />;
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Теперь добавим наши элементы в компонент `TodoApp`:
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 return (
     <div className="todo">
@@ -180,8 +165,7 @@ return (
     </div>
   );
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Проверь в браузере, что элементы добавляются. 
 
@@ -211,15 +195,13 @@ return (
 
 Перепишем функцию `createItem` так, чтобы она использовала порядковый номер в качестве `key`:
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 function createItem(name, index) {
   return <Item name={name} key={index}/>;
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Удаление элементов
 
@@ -229,8 +211,7 @@ function createItem(name, index) {
 
 Мы хотим написать функцию, которая обновляет список items, удалив из него элемент с указанным индексом: 
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 function removeItem(removedIndex) {
 
@@ -241,15 +222,13 @@ function removeItem(removedIndex) {
   setItems(items.filter(f))
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Что происходит: `filter` вызывает `f` c элементами массива, `f` в свою очередь, возвращает `true` для всех элементов, кроме `removedIndex`.
 
 Мы теперь можем дать нашим `Item`  возможность удалять себя:
 
-{% tabs %}
-{% tab title="TodoApp.jsx" %}
+{% code title="TodoApp.jsx" %}
 ```jsx
 function createItem(name, index) {
   
@@ -260,8 +239,7 @@ function createItem(name, index) {
   return <Item name={name} key={index} onDelete={remove}/>;
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 А Item может запрашивать удаление себя по нажатию кнопки:
 

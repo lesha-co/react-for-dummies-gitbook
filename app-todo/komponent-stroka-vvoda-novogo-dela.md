@@ -4,15 +4,13 @@
 
 В созданном файле объявим функцию `Field`, которая будет являться нашим компонентом. Сделаем так, что бы она возвращала хоть что-то:
 
-{% tabs %}
-{% tab title="Field.jsx" %}
+{% code title="Field.jsx" %}
 ```jsx
 export function Field() {
   return <p>Hello, world!</p>
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Не забудь импортировать `React` и `useState`.
 
@@ -20,8 +18,7 @@ export function Field() {
 
 Для ввода текстовых данных есть тег `<input>`, у которого есть свойство `value` для текста и `onChange` для обработки _изменений_, сродни `onClick` для нажатий. Следовательно, наш компонент будет выглядеть как-то так:
 
-{% tabs %}
-{% tab title="Field.jsx" %}
+{% code title="Field.jsx" %}
 ```jsx
 export function Field() {
   const [text, setText] = useState(''); // хранение текста
@@ -37,8 +34,7 @@ export function Field() {
   );
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Обрати внимание на `useState`: теперь изначальное значение — пустая строка.
 
@@ -50,15 +46,13 @@ export function Field() {
 
 Обработчик события получает первым аргументом \(обычно его называют `e`, от "event"\) само событие — всю информацию, которую браузер знает о том, что произошло. В частности, какой элемент на странице породил это событие. Этот элемент доступен нам в объекте `e.target` . Его новое значение — в `e.target.value` . Это значение нам и предстоит сохранить в `text`:
 
-{% tabs %}
-{% tab title="Field.jsx" %}
+{% code title="Field.jsx" %}
 ```jsx
 function onInputChange(e) {
   setText(e.target.value);
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 Вуаля! Теперь мы можем редактировать значение поля ввода! Строго говоря, если бы мы ничего не писали, а оставили голый `<input type="text"/>` , мы бы тоже смогли редактировать его с клавиатуры, однако теперь мы можем его редактировать из кода нашего компонента!
 
@@ -66,8 +60,7 @@ function onInputChange(e) {
 
 Осталось совсем немного: создать кнопку, которая будет добавлять дело в список:
 
-{% tabs %}
-{% tab title="Field.jsx" %}
+{% code title="Field.jsx" %}
 ```jsx
 return (
   <div >
@@ -76,8 +69,7 @@ return (
   </div>
 );
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 {% code title="Field.jsx" %}
 ```text
