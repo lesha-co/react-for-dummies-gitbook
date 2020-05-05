@@ -12,5 +12,6 @@
   * [Компонент: Элемент списка дел](app-todo/komponent-element-spiska-del.md)
   * [Связываем компоненты вместе](app-todo/svyazyvaem-komponenty-vmeste.md)
   * [CSS: Наводим красоту](app-todo/css-navodim-krasotu.md)
+* [Теория: Интенсив по JavaScript](teoriya-intensiv-po-javascript.md)
 * [Глоссарий](glossary.md)
 
